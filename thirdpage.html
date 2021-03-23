@@ -8,7 +8,7 @@
         margin: 0;
         width: 100vw;
         height: 100vh;
-        cursor: url(images/cursors/rainbow/0.gif), auto;
+        cursor: url(images/0.gif), auto;
       }
       p {
         font-family:Arial, Helvetica, sans-serif;
@@ -49,7 +49,24 @@
         border-style: dashed;
       }
     </style>
+<script>
 
+  function aniCursor () {    
+    const num = document.body.dataset.num
+    const val = `url(images/${num}.gif), auto`
+    document.body.style.cursor = val
+    
+    const max = 22 // largest number in my set of images
+    let nextVal = Number(document.body.dataset.num) + 1
+    if (nextVal > max) nextVal = 0
+    document.body.dataset.num = nextVal
+
+    const delay = 100 // speed in milliseconds
+    setTimeout(aniCursor, delay)
+  }
+  
+    window.addEventListener('load', aniCursor)
+  </script>
   </head>
   <body data-num="0">
  
@@ -70,22 +87,5 @@
     </p>
     
   </body>
-         <script>
-
-  function aniCursor () {    
-    const num = document.body.dataset.num
-    const val = `url(images/cursors/rainbow/${num}.gif), auto`
-    document.body.style.cursor = val
-    
-    const max = 22 // largest number in my set of images
-    let nextVal = Number(document.body.dataset.num) + 1
-    if (nextVal > max) nextVal = 0
-    document.body.dataset.num = nextVal
-
-    const delay = 100 // speed in milliseconds
-    setTimeout(aniCursor, delay)
-  }
-  
-    window.addEventListener('load', aniCursor)
-  </script>
+         
 </html>
